@@ -1,0 +1,6 @@
+framework module Pods_GithubActionProject1122_GithubActionProject1122UITests {
+  umbrella header "Pods-GithubActionProject1122-GithubActionProject1122UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
