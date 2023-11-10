@@ -232,21 +232,29 @@ jobs:
               echo -n "$API_KEY_BASE64" | base64 --decode --output private_keys/AuthKey_${{ secrets.APPSTORE_API_KEY_ID }}.p8
               ls  private_keys
               echo "After Saving :"
-      - name: Upload file to test flight
-        run: |
-             echo "Star Uploading"
-             xcrun altool --validate-app -f  $RUNNER_TEMP/export/GithubActionProject1122.ipa -t ios --apiKey ${{ secrets.APPSTORE_API_KEY_ID }} --apiIssuer ${{ secrets.APPSTORE_API_ISSUER_ID }}
-             xcrun altool --upload-app -f  $RUNNER_TEMP/export/GithubActionProject1122.ipa -t ios --apiKey ${{ secrets.APPSTORE_API_KEY_ID }} --apiIssuer ${{ secrets.APPSTORE_API_ISSUER_ID }}
-      - name: Notify on Slack
-        env:
-          TITLE : "CI/CD Starboard-iOS"
-          APP_VERSION : ""
-          BUILD_VERSION : ""
-        run: |
-             export APP_VERSION=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | tr -d 'MARKETING_VERSION =')
-             export BUILD_VERSION=$(xcodebuild -showBuildSettings | grep CURRENT_PROJECT_VERSION | tr -d 'CURRENT_PROJECT_VERSION =')
-             curl -X POST -H "Authorization:Bearer ${{ secrets.SLACK_AUTH_TOKEN }}" -H "Content-Type:application/json" --data "{'channel':'${{ secrets.SLACK_CHANNEL_ID }}','username':'$TITLE','text':' \n<@UHUT7CJ9F>,<@U01JVNS10TA>:\n*Internal Test App $APP_VERSION($BUILD_VERSION) := *https://testflight.apple.com/join/bGbJS5xK\n*Changelog -> * \n${{ steps.ghpages.outputs.content }}'}" https://slack.com/api/chat.postMessage
-             echo "Deployment finished"
+      - name: Upload application
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: ${{ runner.temp }}/build/GithubActionProject1122.ipa
+          # you can also archive the entire directory
+          # path: ${{ runner.temp }}/build
+          retention-days: 3
+#      - name: Upload file to test flight
+#        run: |
+#             echo "Star Uploading"
+#             xcrun altool --validate-app -f  $RUNNER_TEMP/export/GithubActionProject1122.ipa -t ios --apiKey ${{ secrets.APPSTORE_API_KEY_ID }} --apiIssuer ${{ secrets.APPSTORE_API_ISSUER_ID }}
+#             xcrun altool --upload-app -f  $RUNNER_TEMP/export/GithubActionProject1122.ipa -t ios --apiKey ${{ secrets.APPSTORE_API_KEY_ID }} --apiIssuer ${{ secrets.APPSTORE_API_ISSUER_ID }}
+#      - name: Notify on Slack
+#        env:
+#          TITLE : "CI/CD Starboard-iOS"
+#          APP_VERSION : ""
+#          BUILD_VERSION : ""
+#        run: |
+#             export APP_VERSION=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | tr -d 'MARKETING_VERSION =')
+#             export BUILD_VERSION=$(xcodebuild -showBuildSettings | grep CURRENT_PROJECT_VERSION | tr -d 'CURRENT_PROJECT_VERSION =')
+#             curl -X POST -H "Authorization:Bearer ${{ secrets.SLACK_AUTH_TOKEN }}" -H "Content-Type:application/json" --data "{'channel':'${{ secrets.SLACK_CHANNEL_ID }}','username':'$TITLE','text':' \n<@UHUT7CJ9F>,<@U01JVNS10TA>:\n*Internal Test App $APP_VERSION($BUILD_VERSION) := *https://testflight.apple.com/join/bGbJS5xK\n*Changelog -> * \n${{ steps.ghpages.outputs.content }}'}" https://slack.com/api/chat.postMessage
+#             echo "Deployment finished"
 
 
 
