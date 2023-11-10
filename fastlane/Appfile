@@ -1,4 +1,4 @@
-app_identifier("com.techmero.TestingGithubDemo") # The bundle identifier of your app
+app_identifier("com.bvktechnologies.motivation") # The bundle identifier of your app
 apple_id("official@bvktechnologies.com") # Your Apple Developer Portal username
 
 itc_team_id("124023706") # App Store Connect Team ID

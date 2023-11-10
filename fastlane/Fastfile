@@ -28,8 +28,8 @@ default_platform(:ios)
 
 
     DEVELOPER_APP_ID = "6469702477"
-    DEVELOPER_APP_IDENTIFIER = "com.techmero.TestingGithubDemo"
-    PROVISIONING_PROFILE_SPECIFIER = "TestingGithubDemo"
+    DEVELOPER_APP_IDENTIFIER = "com.bvktechnologies.motivation"
+    PROVISIONING_PROFILE_SPECIFIER = "motivation_app_distribution"
     TEMP_KEYCHAIN_USER = "techmero"
     TEMP_KEYCHAIN_PASSWORD = "techmero"
     APPLE_ISSUER_ID = "37938031-4e89-484d-96e6-213008263413"
