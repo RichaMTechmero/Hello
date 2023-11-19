@@ -196,15 +196,38 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-
-      - name: build archive
+          
+      - name: Install Pods
+        run: pod install
+      - name: Increase version code
+        run: xcrun agvtool next-version
+      - name: Commit and push changes
         run: |
-          xcodebuild -scheme "GithubActionProject1122" \
-          -archivePath $RUNNER_TEMP/GithubActionProject1122.xcarchive \
-          -sdk iphoneos \
-          -configuration Debug \
-          -destination generic/platform=iOS \
-          clean archive
+          git config user.email "richamtechmero@gmail.com"
+          git config user.name "RichaMTechmero"
+          git config credential.username "RichaMTechmero"
+          git config --global credential.useHttpPath true
+          git config --global -e
+          git commit -am "Bump version code"
+          git push origin HEAD
+      - name: Read Changelog File
+        id: ghpages
+        uses: jaywcjlove/github-action-read-file@main
+        with:
+          path: ChangeLog/cicd_changelog.md
+      - name: Clean Build Archive
+        run: xcodebuild -workspace GithubActionProject1122.xcworkspace -scheme GithubActionProject1122 clean archive -configuration DevRelease -sdk iphoneos -archivePath GithubActionProject1122.xcarchive
+#      - name: Export IPA
+#        run: xcodebuild -exportArchive -archivePath GithubActionProject1122.xcarchive -exportOptionsPlist GithubActionProject1122/exportOptions.plist -exportPath $RUNNER_TEMP/export
+#
+#      - name: build archive
+#        run: |
+#          xcodebuild -scheme "GithubActionProject1122" \
+#          -archivePath $RUNNER_TEMP/GithubActionProject1122.xcarchive \
+#          -sdk iphoneos \
+#          -configuration Debug \
+#          -destination generic/platform=iOS \
+#          clean archive
 
       - name: export ipa
         env:
