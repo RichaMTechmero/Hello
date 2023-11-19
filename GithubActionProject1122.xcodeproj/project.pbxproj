@@ -132,8 +132,8 @@
 				E47967612AFCDE7000F21118 /* SceneDelegate.swift */,
 				E47967632AFCDE7000F21118 /* ViewController.swift */,
 				E47967652AFCDE7000F21118 /* Main.storyboard */,
-				E47967682AFCDE7100F21118 /* Assets.xcassets */,
 				E479676A2AFCDE7100F21118 /* LaunchScreen.storyboard */,
+				E47967682AFCDE7100F21118 /* Assets.xcassets */,
 				E479676D2AFCDE7100F21118 /* Info.plist */,
 			);
 			path = GithubActionProject1122;
@@ -557,7 +557,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GithubActionProject1122/GithubActionProject1122.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 62;
 				DEVELOPMENT_TEAM = "";
@@ -578,7 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bvktechnologies.motivation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = motivation_app;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = motivation_app;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = motivation_app_distribution;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
