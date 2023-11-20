@@ -216,7 +216,7 @@ jobs:
         with:
           path: ChangeLog/cicd_changelog.md
       - name: Clean Build Archive
-        run: xcodebuild -workspace GithubActionProject1122.xcworkspace -scheme GithubActionProject1122 clean archive -configuration DevRelease -sdk iphoneos -archivePath GithubActionProject1122.xcarchive
+        run: xcodebuild -workspace GithubActionProject1122.xcworkspace -scheme GithubActionProject1122 clean archive -configuration Release -sdk iphoneos -archivePath GithubActionProject1122.xcarchive
       - name: Export IPA
         run: xcodebuild -exportArchive -archivePath GithubActionProject1122.xcarchive -exportOptionsPlist GithubActionProject1122/exportOptions.plist -exportPath $RUNNER_TEMP/export
 #        run:  |
