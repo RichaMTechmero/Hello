@@ -7,14 +7,14 @@
 	<key>destination</key>
 	<string>export</string>
 	<key>method</key>
-	<string>development</string>
+	<string>distribution</string>
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.bvktechnologies.motivation</key>
-		<string>motivation_app</string>
+		<string>motivation_app_distribution</string>
 	</dict>
 	<key>signingCertificate</key>
-	<string>Apple Development</string>
+	<string>AppStore</string>
 	<key>signingStyle</key>
 	<string>manual</string>
 	<key>stripSwiftSymbols</key>
