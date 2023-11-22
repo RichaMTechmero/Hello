@@ -6,7 +6,7 @@ target 'GithubActionProject1122' do
   use_frameworks!
 
   # Pods for GithubActionProject1122
-#  pod 'FirebaseCore'
+  pod 'FirebaseCore'
   target 'GithubActionProject1122Tests' do
     inherit! :search_paths
     # Pods for testing
